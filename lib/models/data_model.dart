@@ -18,6 +18,7 @@ class DataModel {
       );
 }
 
+
 // POST DETAILS
 class PostData {
   String title, body;
