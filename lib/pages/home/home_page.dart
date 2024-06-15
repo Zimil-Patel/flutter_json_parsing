@@ -41,13 +41,24 @@ class HomePage extends StatelessWidget {
                   ...List.generate(
                     providerT.dataModel!.postList.length,
                     (index) => ListTile(
-                      leading: Text(
-                        '${providerT.dataModel!.postList[index].id}',
+                      // id, user id
+                      leading: Column(
+                        children: [
+                          Text(
+                            '${providerT.dataModel!.postList[index].id}',
+                          ),
+                          Text(
+                            '${providerT.dataModel!.postList[index].userId}',
+                          ),
+                        ],
                       ),
+                      // title
                       title: Text(
                         overflow: TextOverflow.ellipsis,
                         providerT.dataModel!.postList[index].title,
                       ),
+
+                      // body, tags
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -58,6 +69,25 @@ class HomePage extends StatelessWidget {
                           Text(
                             overflow: TextOverflow.ellipsis,
                             '# ${providerT.dataModel!.postList[index].tags.join(', ')}',
+                          ),
+                        ],
+                      ),
+
+                      // reactions, view
+                      trailing: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            overflow: TextOverflow.ellipsis,
+                            'L: ${providerT.dataModel!.postList[index].reactions.likes.toString()}',
+                          ),
+                          Text(
+                            overflow: TextOverflow.ellipsis,
+                            'D: ${providerT.dataModel!.postList[index].reactions.dislikes.toString()}',
+                          ),
+                          Text(
+                            overflow: TextOverflow.ellipsis,
+                            'V: ${providerT.dataModel!.postList[index].views.toString()}',
                           ),
                         ],
                       ),
