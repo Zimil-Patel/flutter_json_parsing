@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Posts Data'),
+        title: const Text('User Posts'),
         elevation: 4,
         shadowColor: Colors.grey.withOpacity(0.5),
       ),
@@ -29,11 +29,38 @@ class HomePage extends StatelessWidget {
             return Center(
               child: ListView(
                 children: [
+                  ListTile(
+                    title: Column(
+                      children: [
+                        Text('Total: ${providerT.dataModel!.total}'),
+                        Text('Skips: ${providerT.dataModel!.skip}'),
+                        Text('Skips: ${providerT.dataModel!.limit}'),
+                      ],
+                    ),
+                  ),
                   ...List.generate(
                     providerT.dataModel!.postList.length,
                     (index) => ListTile(
+                      leading: Text(
+                        '${providerT.dataModel!.postList[index].id}',
+                      ),
                       title: Text(
-                          'ID: ${providerT.dataModel!.postList[index].id}'),
+                        overflow: TextOverflow.ellipsis,
+                        providerT.dataModel!.postList[index].title,
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            overflow: TextOverflow.ellipsis,
+                            providerT.dataModel!.postList[index].body,
+                          ),
+                          Text(
+                            overflow: TextOverflow.ellipsis,
+                            '# ${providerT.dataModel!.postList[index].tags.join(', ')}',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
