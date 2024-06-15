@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         Text('Total: ${providerT.dataModel!.total}'),
                         Text('Skips: ${providerT.dataModel!.skip}'),
-                        Text('Skips: ${providerT.dataModel!.limit}'),
+                        Text('Limit: ${providerT.dataModel!.limit}'),
                       ],
                     ),
                   ),
